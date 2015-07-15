@@ -6,13 +6,6 @@ challengeChatApp
         replace: true,
         templateUrl: 'app/shared/chatBox/header/header.view.html',
         link: function (scope, el, attrs){
-            scope.appName = APP_DETAILS.appName;
-            scope.refreshData = refreshData;
-            scope.dialog = {
-                show: showDialog,
-                cancel: cancelDialog,
-                confirm: confirmDialogData
-            };
             function refreshData(){
                 scope.refreshMessageList();
             }
@@ -34,6 +27,14 @@ challengeChatApp
             function confirmDialogData(evt){
                 $mdDialog.cancel();
             }
+
+            scope.appName = APP_DETAILS.appName;
+            scope.refreshData = refreshData;
+            scope.dialog = {
+                show: showDialog,
+                cancel: cancelDialog,
+                confirm: confirmDialogData
+            };
         }
     };
 }]);

@@ -1,20 +1,16 @@
-
 'use strict';
 
-var challengeChatApp = angular.module('challengeChat',[
+var challengeChatApp = angular.module('challengeChat', [
     'ngMaterial',
     'ngMdIcons',
     'doowb.angular-pusher',
-    'luegg.directives'
-    ]);
+    'luegg.directives']);
 
-challengeChatApp.config(['$mdThemingProvider', 'PUSHER_OPTIONS', 'PusherServiceProvider',
-    function($mdThemingProvider, PUSHER_OPTIONS, PusherServiceProvider){
-        PusherServiceProvider.setToken(PUSHER_OPTIONS.key).setOptions({});
+challengeChatApp.config(['$mdThemingProvider', 'PUSHER_OPTIONS', 'PusherServiceProvider', function ($mdThemingProvider, PUSHER_OPTIONS, PusherServiceProvider) {
+   PusherServiceProvider.setToken(PUSHER_OPTIONS.key).setOptions({});
 
-        $mdThemingProvider
+    $mdThemingProvider
         .theme('default')
         .primaryPalette('light-blue')
         .accentPalette('orange');
-    }
-]);
+}]);

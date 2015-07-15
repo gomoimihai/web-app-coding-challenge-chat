@@ -1,6 +1,5 @@
 'use strict';
-challengeChatApp
-.factory('ChatBoxService', ['$q', '$http', 'PUSHER_OPTIONS', function ($q, $http, PUSHER_OPTIONS) {
+angular.module('challengeChat').factory('ChatBoxService', ['$q', '$http', 'PUSHER_OPTIONS', function ($q, $http, PUSHER_OPTIONS) {
     var apiUrl = PUSHER_OPTIONS.apiUrl + PUSHER_OPTIONS.port + PUSHER_OPTIONS.channel;
 
     function getAllMessages () {

@@ -8,17 +8,8 @@ challengeChatApp
             replace: true,
             templateUrl: 'app/shared/chatBox/chatBox.view.html',
             link: function (scope, el, attrs){
-                var imagePath = 'https://robohash.org/';
-                var imageType = '.png';
-                scope.messages = [];
-                scope.user = {
-                    name: generateRandomName("Guest"),
-                    email: "no_email@email.com"
-                };
-                scope.refreshMessageList = refreshMessageList;
-                scope.sendMessage = sendMessage;
-
-                init();
+                var imagePath = 'https://robohash.org/',
+                imageType = '.png';
 
                 function init(){
                     loadAllMessages();
@@ -75,6 +66,15 @@ challengeChatApp
                 function generateRandomName(append){
                     return append + Math.floor(Math.random()*900) + 100;
                 }
+
+                init();
+                scope.messages = [];
+                scope.user = {
+                    name: generateRandomName("Guest"),
+                    email: "no_email@email.com"
+                };
+                scope.refreshMessageList = refreshMessageList;
+                scope.sendMessage = sendMessage;
             }
         }
     }]);

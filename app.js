@@ -3,11 +3,7 @@
 var express = require('express');
 var app = express();
 app.use(express.static(__dirname + '/public'));
-/*
-    Hide internal paths for the outside world
-*/
-//app.use('/node_modules', express.static(__dirname + '/node_modules/'));
-
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.listen(process.env.PORT || 1337, function(err) {
 	if (err) {
 		console.error(err);

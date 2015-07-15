@@ -2,6 +2,6 @@
     padding-bottom: 8px;
 }
 
-.hide {
-    display: none !important;
+md-progress-linear.hide {
+    display: none;
 }

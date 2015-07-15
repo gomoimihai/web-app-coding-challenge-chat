@@ -4,7 +4,7 @@ challengeChatApp.directive('chatHeader', ['APP_DETAILS', '$mdDialog', function (
         restrict: 'A',
         replace: true,
         templateUrl: 'app/shared/chatBox/header/header.view.html',
-        link: function (scope, el, attrs){
+        link: function (scope){
             function refreshData(){
                 scope.refreshMessageList();
             }

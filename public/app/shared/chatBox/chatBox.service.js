@@ -1,5 +1,5 @@
 'use strict';
-angular.module('challengeChat').factory('ChatBoxService', ['$q', '$http', 'PUSHER_OPTIONS', function ($q, $http, PUSHER_OPTIONS) {
+challengeChatApp.factory('ChatBoxService', ['$q', '$http', 'PUSHER_OPTIONS', function ($q, $http, PUSHER_OPTIONS) {
     var apiUrl = PUSHER_OPTIONS.apiUrl + PUSHER_OPTIONS.port + PUSHER_OPTIONS.channel;
 
     function getAllMessages () {
@@ -11,7 +11,7 @@ angular.module('challengeChat').factory('ChatBoxService', ['$q', '$http', 'PUSHE
                         resolve(result.data);
                     }
                 }, function (reason) {
-                  reject(reason);
+                    reject(reason);
               });
         });
     }

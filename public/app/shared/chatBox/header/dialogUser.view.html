@@ -1,35 +1,34 @@
-
-<md-dialog aria-label="Mango (Fruit)">
-<form>
-      <md-toolbar>
+ <md-dialog aria-label="Mango (Fruit)">
+  <form>
+    <md-toolbar>
       <div class="md-toolbar-tools">
-          <h2>Chat registration</h2>
-          <span flex></span>
-          <md-button class="md-icon-button" ng-click="dialog.cancel(evt)">
+        <h2>Chat registration</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="dialog.cancel(evt)">
           <ng-md-icon style="fill: white;" aria-label="Close dialog" icon="close"></ng-md-icon>
-      </md-button>
-    </div>
+        </md-button>
+      </div>
     </md-toolbar>
     <md-dialog-content>
-    <div>
-      <md-input-container class="smaller">
-      <label>Nickname</label>
-      <input ng-model="user.name">
-    </md-input-container>
-    <md-input-container class="smaller">
-    <label>Email</label>
-    <input ng-model="user.email" type="email">
-    </md-input-container>
-    </div>
-    </md-dialog-content>
-    <div class="md-actions" layout="row">
-        <span flex></span>
-        <md-button ng-click="dialog.confirm(evt)" class="md-primary">
-        Ok
-    </md-button>
-    <md-button ng-click="dialog.cancel(evt)" class="md-primary">
-    Cancel
-    </md-button>
-    </div>
-</form>
+      <div>
+        <md-input-container class="smaller">
+          <label>Nickname</label>
+          <input ng-model="user.name">
+          </md-input-container>
+          <md-input-container class="smaller">
+            <label>Email</label>
+            <input ng-model="user.email" type="email">
+            </md-input-container>
+          </div>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+          <span flex></span>
+          <md-button ng-click="dialog.confirm(evt)" class="md-primary">
+          Ok
+          </md-button>
+          <md-button ng-click="dialog.cancel(evt)" class="md-primary">
+          Cancel
+          </md-button>
+        </div>
+      </form>
 </md-dialog>

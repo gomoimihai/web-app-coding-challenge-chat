@@ -76,5 +76,6 @@ challengeChatApp
                 scope.refreshMessageList = refreshMessageList;
                 scope.sendMessage = sendMessage;
             }
+
         }
     }]);

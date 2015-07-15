@@ -16,7 +16,4 @@ https://scotch.io/tutorials/angularjs-best-practices-directory-structure
 
 ## Angular Material
 
-Using html5 doctype with Angular Material damages the Material UI Elements.
-https://github.com/angular/material/tree/v0.10.1-rc1
-https://github.com/angular/material/issues/1895
-! Angular Material runs better on Chrome
+Angular Material runs better on Chrome

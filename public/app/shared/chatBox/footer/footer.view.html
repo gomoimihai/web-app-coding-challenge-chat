@@ -1,18 +1,21 @@
-<md-toolbar>
-        <div class="md-toolbar-tools">
+<md-toolbar class="md-tall">
+    <div class="md-toolbar-tools">
+        <form name="projectForm" layout-fill>
             <div layout="row" layout-align="center center" layout-fill>
                 <div flex="80">
-                    <md-input-container class="smaller">
+                        <md-input-container class="smaller">
                         <label>message...</label>
-                        <input ng-model="messageToBeSent">
+                        <input name="message" ng-model="messageToBeSent" autocomplete="off">
                     </md-input-container>
-            </div>
-            <div flex="20">
-                <div layout="row" layout-align="end center">
-                    <md-button class="md-fab" aria-label="Send Message" ng-click="sendMessageAction()">
-                      <ng-md-icon icon="send" style="fill: white"></ng-md-icon>
-                    </md-button>
+                </div>
+                <div flex="20">
+                    <div layout="row" layout-align="end center">
+                        <md-button class="md-fab" aria-label="Send Message" ng-click="sendMessageAction()">
+                            <ng-md-icon icon="send" style="fill: white"></ng-md-icon>
+                        </md-button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
 </md-toolbar>

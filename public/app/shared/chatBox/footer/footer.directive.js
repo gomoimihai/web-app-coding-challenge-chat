@@ -1,6 +1,5 @@
 'use strict';
-challengeChatApp
-.directive('chatFooter', ['ChatBoxService', function (ChatBoxService){
+challengeChatApp.directive('chatFooter', ['ChatBoxService', function (ChatBoxService){
     return {
         restrict: 'A',
         replace: true,

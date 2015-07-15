@@ -1,6 +1,5 @@
 'use strict';
-challengeChatApp
-.directive('chatHeader', ['APP_DETAILS', '$mdDialog', function (APP_DETAILS, $mdDialog){
+challengeChatApp.directive('chatHeader', ['APP_DETAILS', '$mdDialog', function (APP_DETAILS, $mdDialog){
     return {
         restrict: 'A',
         replace: true,

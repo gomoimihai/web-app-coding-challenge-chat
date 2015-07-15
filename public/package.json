@@ -1,0 +1,23 @@
+{
+  "name": "angular-material-and-pusher-app",
+  "version": "1.0.0",
+  "author": "Mihai Gomoi",
+  "devDependencies": {
+    "angular": "^1.4.2",
+    "angular-animate": "^1.4.2",
+    "angular-aria": "^1.4.2",
+    "angular-material": "^0.10.0",
+    "angular-mocks": "^1.4.2",
+    "angular-pusher": "^0.0.7",
+    "grunt": "^0.4.5",
+    "grunt-": "^0.1.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.11.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17"
+  }
+}

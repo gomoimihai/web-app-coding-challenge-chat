@@ -6,4 +6,13 @@ The task is to refactor this web application with Pusher and angular (Please ign
 
 The backend of this implementation publishes new chat messages with Pusher(https://pusher.com/) on the channel 'chat-messages' with the event 'new_message'. Use the key "be0cb4958ed00f849ac9" to establish a connection to our Pusher server.
 
-## Directory structure used - https://scotch.io/tutorials/angularjs-best-practices-directory-structure
+## Directory structure used
+
+https://scotch.io/tutorials/angularjs-best-practices-directory-structure
+
+## Angular Material
+
+Using html5 doctype with Angular Material damages the Material UI Elements.
+https://github.com/angular/material/tree/v0.10.1-rc1
+https://github.com/angular/material/issues/1895
+! Angular Material runs better on Chrome

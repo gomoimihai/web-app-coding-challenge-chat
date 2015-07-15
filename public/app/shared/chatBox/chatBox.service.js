@@ -5,14 +5,14 @@ angular.module('challengeChat').factory('ChatBoxService', ['$q', '$http', 'PUSHE
     function getAllMessages () {
         return $q(function(resolve, reject){
             $http.get(apiUrl).then(function (result) {
-              if (!result.data || !result.data.length) {
-                resolve([]);
-            } else {
-                resolve(result.data);
-            }
-        }, function (reason) {
-          reject(reason);
-      });
+                    if (!result.data || !result.data.length) {
+                        resolve([]);
+                    } else {
+                        resolve(result.data);
+                    }
+                }, function (reason) {
+                  reject(reason);
+              });
         });
     }
 

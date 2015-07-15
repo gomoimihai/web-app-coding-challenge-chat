@@ -1,6 +1,6 @@
 <div layout="column" layout-fill>
     <div chat-header></div>
-    <md-content class="full-height">
+    <md-content class="full-height" scroll-glue>
         <md-progress-linear id="progressBar" md-mode="indeterminate"></md-progress-linear>
         <md-list>
             <md-list-item class="md-3-line" ng-repeat="item in messages">
@@ -8,7 +8,7 @@
                 <div class="md-list-item-text">
                     <h3 ng-bind="item.who"></h3>
                     <p ng-bind="item.notes"></p>
-                    <p ng-bind="item.date | timeago"></p>
+                    <p ng-bind="item.date | date: 'medium'"></p>
                 </div>
                 <md-divider inset></md-divider>
             </md-list-item>

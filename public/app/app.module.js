@@ -1,26 +1,20 @@
-/**
- * App main module
- */
-(function(){
-    'use strict';
 
-    angular.module('challengeChat',[
-        'ngMaterial',
-        'ngMdIcons',
-        'challengeChat.filters',
-        'challengeChat.constants',
-        'doowb.angular-pusher'
+'use strict';
+
+var challengeChatApp = angular.module('challengeChat',[
+    'ngMaterial',
+    'ngMdIcons',
+    'doowb.angular-pusher',
+    'luegg.directives'
     ]);
 
-    angular.module('challengeChat').config(configure);
+challengeChatApp.config(['$mdThemingProvider', 'PUSHER_OPTIONS', 'PusherServiceProvider',
+    function($mdThemingProvider, PUSHER_OPTIONS, PusherServiceProvider){
+        PusherServiceProvider.setToken(PUSHER_OPTIONS.key).setOptions({});
 
-    configure.$inject = ['$mdThemingProvider', 'pusherSetup_const', 'PusherServiceProvider'];
-
-    function configure($mdThemingProvider, pusherSetup_const, PusherServiceProvider){
-        PusherServiceProvider.setToken(pusherSetup_const.key).setOptions({});
         $mdThemingProvider
-            .theme('default')
-            .primaryPalette('light-blue')
-            .accentPalette('orange');
+        .theme('default')
+        .primaryPalette('light-blue')
+        .accentPalette('orange');
     }
-})();
+]);

@@ -1,18 +1,12 @@
-(function(){
-    'use strict';
-    angular.module('challengeChat').directive('chatHeader', header);
-    header.$inject = ['appDetails_const', '$mdDialog'];
-
-    function header(appDetails_const, $mdDialog){
-        var baseTemplateUrl = 'app/shared/chatBox/header/';
-        var headerDir = {};
-        headerDir.link = link;
-        headerDir.restrict = 'A';
-        headerDir.replace = true;
-        headerDir.templateUrl = baseTemplateUrl + 'header.view.html';
-
-        function link(scope, el, attrs){
-            scope.appName = appDetails_const.appName;
+'use strict';
+challengeChatApp
+.directive('chatHeader', ['APP_DETAILS', '$mdDialog', function (APP_DETAILS, $mdDialog){
+    return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: 'app/shared/chatBox/header/header.view.html',
+        link: function (scope, el, attrs){
+            scope.appName = APP_DETAILS.appName;
             scope.refreshData = refreshData;
             scope.dialog = {
                 show: showDialog,
@@ -24,7 +18,7 @@
             }
             function showDialog(ev){
                 $mdDialog.show({
-                    templateUrl: baseTemplateUrl + 'dialogUser.view.html',
+                    templateUrl: 'app/shared/chatBox/header/dialogUser.view.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     scope: scope,
@@ -41,7 +35,7 @@
                 $mdDialog.cancel();
             }
         }
+    };
+}]);
 
-        return headerDir;
-    }
-})();
+

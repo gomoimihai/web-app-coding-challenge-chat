@@ -1,0 +1,18 @@
+<div layout="column" layout-fill>
+    <div chat-header></div>
+    <md-content class="full-height">
+        <md-progress-linear id="progressBar" md-mode="indeterminate"></md-progress-linear>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in messages">
+                <img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar">
+                <div class="md-list-item-text">
+                    <h3 ng-bind="item.who"></h3>
+                    <p ng-bind="item.notes"></p>
+                    <p ng-bind="item.date | timeago"></p>
+                </div>
+                <md-divider inset></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
+    <div chat-footer></div>
+</div>

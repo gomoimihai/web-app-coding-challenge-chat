@@ -1,0 +1,18 @@
+<md-toolbar>
+        <div class="md-toolbar-tools">
+            <div layout="row" layout-align="center center" layout-fill>
+                <div flex="80">
+                    <md-input-container class="smaller">
+                        <label>message...</label>
+                        <input ng-model="messageToBeSent">
+                    </md-input-container>
+            </div>
+            <div flex="20">
+                <div layout="row" layout-align="end center">
+                    <md-button class="md-fab" aria-label="Send Message" ng-click="sendMessageAction()">
+                      <ng-md-icon icon="send" style="fill: white"></ng-md-icon>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+</md-toolbar>

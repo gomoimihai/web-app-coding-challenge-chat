@@ -1,0 +1,29 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h3 ng-bind="appName" class="md-flex"></h3>
+        <span flex></span>
+        <md-menu md-position-mode="target-right target">
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+                <ng-md-icon icon="settings" style="fill: white"></ng-md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-click="dialog.show($event)">Edit User</md-button>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="refreshData()">Refresh</md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</md-toolbar>
+
+
+
+
+
+
+
+
+

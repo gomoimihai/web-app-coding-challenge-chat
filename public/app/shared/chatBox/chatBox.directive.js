@@ -129,8 +129,10 @@ challengeChatApp
                  * @memberOf Directives.chatBox
                  */
                 scope.sendMessage = function (message) {
-                    scope.user = AuthService.getUser();
-                    ChatBoxService.sendMessage(message, scope.user.name, scope.user.email);
+                    if(message){
+                        scope.user = AuthService.getUser();
+                        ChatBoxService.sendMessage(message, scope.user.name, scope.user.email);
+                    }
                 };
 
                 scope.$on('refresh', refreshMessageList)

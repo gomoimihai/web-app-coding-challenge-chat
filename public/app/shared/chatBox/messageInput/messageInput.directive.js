@@ -17,7 +17,7 @@ challengeChatApp
         },
         replace: true,
         templateUrl: 'app/shared/chatBox/messageInput/messageInput.view.html',
-        link: function (scope){
+        link: function (scope, el){
             scope.messageToBeSent = "";
             /**
              * @name sendMessageAction
@@ -27,8 +27,11 @@ challengeChatApp
              * @memberOf Directives.chatMessageInput
              */
             scope.sendMessageAction = function(){
-                scope.sendMessageFnc(scope.messageToBeSent);
-                scope.messageToBeSent = "";
+                if(scope.messageToBeSent){
+                    scope.sendMessageFnc(scope.messageToBeSent);
+                    scope.projectForm.$setPristine();
+                    scope.messageToBeSent = " ";
+                }
             }
         }
     };

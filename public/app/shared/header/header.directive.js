@@ -16,7 +16,6 @@ challengeChatApp
             replace: true,
             templateUrl: 'app/shared/header/header.view.html',
             link: function (scope){
-
                 /**
                  * @name showDialog
                  * @desc Show dialog box

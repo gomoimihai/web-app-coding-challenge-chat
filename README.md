@@ -17,3 +17,12 @@ https://scotch.io/tutorials/angularjs-best-practices-directory-structure
 ## Angular Material
 
 Angular Material runs better on Chrome
+
+## Run app
+to start the node server run "node app.js"
+to start the karma unit testing run "grunt unit-test"
+
+## Next Steps
+1. Increase Unit test code coverage
+2. Dependecy minification automatization using grunt
+3. TBD

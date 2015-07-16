@@ -10,8 +10,8 @@ challengeChatApp.factory('AuthService', [function () {
      * @memberOf Factory
      */
     var user = {
-        name: "Mihai",
-        email: "email@email.com"
+        name: 'Mihai',
+        email: 'email@email.com'
     };
     /**
      * @name getUser

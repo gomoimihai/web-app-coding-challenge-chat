@@ -5,8 +5,8 @@ var challengeChatApp = angular.module('challengeChat', [
     'luegg.directives']);
 
 challengeChatApp.config(['$mdThemingProvider', 'PUSHER_OPTIONS', 'PusherServiceProvider', function ($mdThemingProvider, PUSHER_OPTIONS, PusherServiceProvider) {
-   'use strict';
-   PusherServiceProvider.setToken(PUSHER_OPTIONS.key).setOptions({});
+    'use strict';
+    PusherServiceProvider.setToken(PUSHER_OPTIONS.key).setOptions({});
     $mdThemingProvider
         .theme('default')
         .primaryPalette('light-blue')

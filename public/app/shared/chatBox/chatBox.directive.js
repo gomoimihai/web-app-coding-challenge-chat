@@ -2,9 +2,8 @@
  * chatBox Directive
  * @namespace Directives
  */
-challengeChatApp
-.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxService', 'AuthService', '$rootScope',
-    function (Pusher, PUSHER_OPTIONS, ChatBoxService, AuthService, $rootScope){
+challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxService', 'AuthService',
+    function (Pusher, PUSHER_OPTIONS, ChatBoxService, AuthService) {
         'use strict';
         /**
          * @namespace chatBox
@@ -16,7 +15,7 @@ challengeChatApp
             scope: {},
             replace: true,
             templateUrl: 'app/shared/chatBox/chatBox.view.html',
-            link: function (scope, el) {
+            link: function (scope) {
                 var imagePath = 'https://robohash.org/',
                     imageType = '.png';
 
@@ -27,7 +26,7 @@ challengeChatApp
                  * @returns {Object}
                  * @memberOf Directives.chatBox
                  */
-                function formatMessageObj (m) {
+                function formatMessageObj(m) {
                     var who = m.user !== undefined ? m.user : 'Anonymous',
                         notes = m.text !== undefined ? m.text : '',
                         date = m.time !== undefined ? m.time : '',
@@ -50,10 +49,10 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function progressBarToogle () {
-                    if(scope.messages.length > 0) {
+                function progressBarToogle() {
+                    if (scope.messages.length > 0) {
                         scope.progressBarVisibility = false;
-                    } else{
+                    } else {
                         scope.progressBarVisibility = true;
                     }
                 }
@@ -65,13 +64,12 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function loadAllMessages () {
-                    ChatBoxService.getAllMessages()
-                    .then(function (messages) {
-                        messages.forEach(function(message) {
+                function loadAllMessages() {
+                    ChatBoxService.getAllMessages().then(function (messages) {
+                        messages.forEach(function (message) {
                             scope.messages.push(formatMessageObj(message));
                         });
-                        progressBarToogle()
+                        progressBarToogle();
                     }).catch(function (error) {
                         console.log(error);
                     });
@@ -83,8 +81,8 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function newMessageSubscribe () {
-                    Pusher.subscribe(PUSHER_OPTIONS.channel, PUSHER_OPTIONS.eventName, function(message){
+                function newMessageSubscribe() {
+                    Pusher.subscribe(PUSHER_OPTIONS.channel, PUSHER_OPTIONS.eventName, function (message) {
                         scope.messages.push(formatMessageObj(message));
                     });
                 }
@@ -96,7 +94,7 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function init () {
+                function init() {
                     loadAllMessages();
                     newMessageSubscribe();
                 }
@@ -108,10 +106,10 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function refreshMessageList () {
+                function refreshMessageList() {
                     scope.messages = [];
                     loadAllMessages();
-                };
+                }
 
                 init();
 
@@ -129,13 +127,13 @@ challengeChatApp
                  * @memberOf Directives.chatBox
                  */
                 scope.sendMessage = function (message) {
-                    if(message){
+                    if (message) {
                         scope.user = AuthService.getUser();
                         ChatBoxService.sendMessage(message, scope.user.name, scope.user.email);
                     }
                 };
 
-                scope.$on('refresh', refreshMessageList)
+                scope.$on('refresh', refreshMessageList);
             }
 
         };

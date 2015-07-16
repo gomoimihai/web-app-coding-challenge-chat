@@ -2,8 +2,7 @@
  * AuthService Factory
  * @namespace Factory
  */
-challengeChatApp
-.factory('AuthService', [function () {
+challengeChatApp.factory('AuthService', [function () {
     'use strict';
     /**
      * @namespace AuthService
@@ -21,7 +20,7 @@ challengeChatApp
      * @returns {Object}
      * @memberOf Factory.AuthService
      */
-    function getUser () {
+    function getUser() {
         return user;
     }
     /**
@@ -31,11 +30,11 @@ challengeChatApp
      * @returns {boolean}
      * @memberOf Factory.AuthService
      */
-    function setUser(userName, userEmail){
+    function setUser(userName, userEmail) {
         user = {
             name: userName,
             email: userEmail
-        }
+        };
         return true;
     }
 

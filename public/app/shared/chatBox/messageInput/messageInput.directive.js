@@ -2,8 +2,7 @@
  * chatMessageInput Directive
  * @namespace Directives
  */
-challengeChatApp
-.directive('chatMessageInput', ['ChatBoxService', function (ChatBoxService){
+challengeChatApp.directive('chatMessageInput', [function () {
     'use strict';
     /**
      * @namespace chatMessageInput
@@ -12,12 +11,12 @@ challengeChatApp
      */
     return {
         restrict: 'AE',
-        scope:{
+        scope: {
             sendMessageFnc: '='
         },
         replace: true,
         templateUrl: 'app/shared/chatBox/messageInput/messageInput.view.html',
-        link: function (scope, el){
+        link: function (scope) {
             scope.messageToBeSent = "";
             /**
              * @name sendMessageAction
@@ -26,13 +25,13 @@ challengeChatApp
              * @returns {undefined}
              * @memberOf Directives.chatMessageInput
              */
-            scope.sendMessageAction = function(){
-                if(scope.messageToBeSent){
+            scope.sendMessageAction = function () {
+                if (scope.messageToBeSent) {
                     scope.sendMessageFnc(scope.messageToBeSent);
                     scope.projectForm.$setPristine();
                     scope.messageToBeSent = " ";
                 }
-            }
+            };
         }
     };
 }]);

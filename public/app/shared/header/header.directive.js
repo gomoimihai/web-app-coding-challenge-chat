@@ -2,9 +2,8 @@
  * header Directive
  * @namespace Directives
  */
-challengeChatApp
-.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService', '$rootScope',
-    function (APP_DETAILS, $mdDialog, AuthService, $rootScope){
+challengeChatApp.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService',
+    function (APP_DETAILS, $mdDialog, AuthService) {
         'use strict';
         /**
          * @namespace header
@@ -15,7 +14,7 @@ challengeChatApp
             restrict: 'E',
             replace: true,
             templateUrl: 'app/shared/header/header.view.html',
-            link: function (scope){
+            link: function (scope) {
                 /**
                  * @name showDialog
                  * @desc Show dialog box
@@ -23,7 +22,7 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.header
                  */
-                function showDialog(ev){
+                function showDialog(ev) {
                     scope.user = AuthService.getUser();
                     $mdDialog.show({
                         templateUrl: 'app/shared/header/dialogUser.view.html',
@@ -42,7 +41,7 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.header
                  */
-                function cancelDialog(){
+                function cancelDialog() {
                     $mdDialog.cancel();
                 }
 
@@ -53,14 +52,14 @@ challengeChatApp
                  * @returns {undefined}
                  * @memberOf Directives.header
                  */
-                function confirmDialogData(){
+                function confirmDialogData() {
                     AuthService.setUser(scope.user.name, scope.user.email);
                     $mdDialog.cancel();
                 }
 
                 scope.appName = APP_DETAILS.appName;
 
-                scope.refreshData = function(){
+                scope.refreshData = function () {
                     scope.$parent.$broadcast('refresh');
                 };
 
@@ -71,6 +70,6 @@ challengeChatApp
                 };
             }
         };
-}]);
+    }]);
 
 

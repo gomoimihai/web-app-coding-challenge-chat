@@ -27,12 +27,12 @@ challengeChatApp.directive('chatMessageInput', [function () {
              * @memberOf Directives.chatMessageInput
              */
             scope.sendMessageAction = function () {
-                if (scope.messageToBeSent !== "") {
+                if (scope.messageToBeSent.trim() !== "") {
                     scope.invalidMessage = false;
                     scope.sendMessageFn(scope.messageToBeSent);
-                    scope.messageToBeSent = " ";
+                    scope.messageToBeSent = "";
                 } else {
-                     scope.invalidMessage = true;
+                    scope.invalidMessage = true;
                 }
             };
         }

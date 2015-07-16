@@ -1,7 +1,6 @@
-<div layout="column" layout-fill>
-    <div chat-header></div>
+<span layout="column" layout-fill>
     <md-content class="full-height" scroll-glue>
-        <md-progress-linear id="progressBar" md-mode="indeterminate"></md-progress-linear>
+        <md-progress-linear ng-class="{hide: !progressBarVisibility}" id="progressBar" md-mode="indeterminate"></md-progress-linear>
         <md-list>
             <md-list-item class="md-3-line" ng-repeat="item in messages">
                 <img ng-src="{{item.face}}" alt="{{item.who}}" class="md-avatar">
@@ -14,5 +13,5 @@
             </md-list-item>
         </md-list>
     </md-content>
-    <div chat-footer></div>
-</div>
+    <div chat-message-input send-message-fnc="sendMessage"></div>
+</span>

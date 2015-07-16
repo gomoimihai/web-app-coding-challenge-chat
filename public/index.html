@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body ng-app="challengeChat" layout="row" ng-cloak>
-
-    <chat-box></chat-box>
+    <div layout="column" ng-controller="homeController" layout-fill>
+        <header></header>
+        <chat-box></chat-box>
+    </div>
 
     <!-- Load Libraries-->
     <script src="/scripts/angular/angular.js"></script>
@@ -22,11 +24,11 @@
     <!-- Load angular assets-->
     <script src="app/app.module.js"></script>
     <script src="app/app.constants.js"></script>
-    <script src="app/shared/chatBox/header/header.directive.js"></script>
-    <script src="app/shared/chatBox/footer/footer.directive.js"></script>
+    <script src="app/components/home/home.controller.js"></script>
+    <script src="app/shared/authentification/authentification.service.js"></script>
+    <script src="app/shared/header/header.directive.js"></script>
+    <script src="app/shared/chatBox/messageInput/messageInput.directive.js"></script>
     <script src="app/shared/chatBox/chatBox.service.js"></script>
     <script src="app/shared/chatBox/chatBox.directive.js"></script>
-    <!-- Load project assets-->
-
 </body>
 </html>

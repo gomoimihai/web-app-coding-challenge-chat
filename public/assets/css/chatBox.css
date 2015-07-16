@@ -5,3 +5,8 @@
 md-progress-linear.hide {
     display: none;
 }
+
+.error-message{
+    font-size: 12px;
+    color: red;
+}

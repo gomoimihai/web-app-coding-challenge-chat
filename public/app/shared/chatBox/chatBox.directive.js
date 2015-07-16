@@ -2,8 +2,8 @@
  * chatBox Directive
  * @namespace Directives
  */
-challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxService', 'AuthService',
-    function (Pusher, PUSHER_OPTIONS, ChatBoxService, AuthService) {
+challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxService', 'AuthService', '$log',
+    function (Pusher, PUSHER_OPTIONS, ChatBoxService, AuthService, $log) {
         'use strict';
         /**
          * @namespace chatBox
@@ -16,45 +16,17 @@ challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxServi
             replace: true,
             templateUrl: 'app/shared/chatBox/chatBox.view.html',
             link: function (scope) {
-                var imagePath = 'https://robohash.org/',
-                    imageType = '.png';
+                var user;
 
                 /**
-                 * @name formatMessageObj
-                 * @desc Formats message object
-                 * @param {Object} m Message to format
-                 * @returns {Object}
-                 * @memberOf Directives.chatBox
-                 */
-                function formatMessageObj(m) {
-                    var who = m.user !== undefined ? m.user : 'Anonymous',
-                        notes = m.text !== undefined ? m.text : '',
-                        date = m.time !== undefined ? m.time : '',
-                        email = m.email !== undefined ? m.email : 'example@example.com',
-                        face;
-                    face = imagePath + email + imageType;
-
-                    return {
-                        who: who,
-                        notes: notes,
-                        date: date,
-                        face: face
-                    };
-                }
-
-                /**
-                 * @name progressBarToogle
-                 * @desc Toggle progress bar
+                 * @name setProgressBarVisibility
+                 * @desc Set progress bar visibility
                  * @param {undefined}
                  * @returns {undefined}
                  * @memberOf Directives.chatBox
                  */
-                function progressBarToogle() {
-                    if (scope.messages.length > 0) {
-                        scope.progressBarVisibility = false;
-                    } else {
-                        scope.progressBarVisibility = true;
-                    }
+                function setProgressBarVisibility(visibility) {
+                    scope.progressBarVisibility = visibility;
                 }
 
                 /**
@@ -65,13 +37,13 @@ challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxServi
                  * @memberOf Directives.chatBox
                  */
                 function loadAllMessages() {
-                    ChatBoxService.getAllMessages().then(function (messages) {
-                        messages.forEach(function (message) {
-                            scope.messages.push(formatMessageObj(message));
-                        });
-                        progressBarToogle();
+                    setProgressBarVisibility(true);
+                    ChatBoxService.getAllMessages().then(function (response) {
+                        scope.messages = response;
+                        setProgressBarVisibility(false);
                     }).catch(function (error) {
                         console.log(error);
+                        setProgressBarVisibility(false);
                     });
                 }
                 /**
@@ -83,7 +55,8 @@ challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxServi
                  */
                 function newMessageSubscribe() {
                     Pusher.subscribe(PUSHER_OPTIONS.channel, PUSHER_OPTIONS.eventName, function (message) {
-                        scope.messages.push(formatMessageObj(message));
+                        scope.messages.push(ChatBoxService.formatMessage(message));
+                        $log.info("Message received");
                     });
                 }
 
@@ -128,8 +101,16 @@ challengeChatApp.directive('chatBox', ['Pusher', 'PUSHER_OPTIONS', 'ChatBoxServi
                  */
                 scope.sendMessage = function (message) {
                     if (message) {
-                        scope.user = AuthService.getUser();
-                        ChatBoxService.sendMessage(message, scope.user.name, scope.user.email);
+                        user = AuthService.getUser();
+                        ChatBoxService.sendMessage(message, user.name, user.email).then(function (response) {
+                            if (response) {
+                                $log.info("Message sent");
+                            }
+                            setProgressBarVisibility(false);
+                        }).catch(function (error) {
+                            $log.error(error);
+                            setProgressBarVisibility(false);
+                        });
                     }
                 };
 

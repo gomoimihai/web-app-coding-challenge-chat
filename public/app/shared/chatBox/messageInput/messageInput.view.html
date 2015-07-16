@@ -5,7 +5,10 @@
                 <div flex="80">
                     <md-input-container class="smaller">
                         <label>message...</label>
-                        <input required name="message" ng-model="messageToBeSent" autocomplete="off">
+                        <input name="message" ng-model="messageToBeSent" autocomplete="off">
+                        <div ng-messages="projectForm">
+                            <div class="error-message" ng-show="invalidMessage">You should not sent an empty message, be eco friendly :)</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <div flex="20">

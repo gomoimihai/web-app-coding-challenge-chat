@@ -12,12 +12,13 @@ challengeChatApp.directive('chatMessageInput', [function () {
     return {
         restrict: 'AE',
         scope: {
-            sendMessageFnc: '='
+            sendMessageFn: '='
         },
         replace: true,
         templateUrl: 'app/shared/chatBox/messageInput/messageInput.view.html',
         link: function (scope) {
             scope.messageToBeSent = "";
+            scope.invalidMessage = false;
             /**
              * @name sendMessageAction
              * @desc Send a message using the provided callback
@@ -26,10 +27,12 @@ challengeChatApp.directive('chatMessageInput', [function () {
              * @memberOf Directives.chatMessageInput
              */
             scope.sendMessageAction = function () {
-                if (scope.messageToBeSent) {
-                    scope.sendMessageFnc(scope.messageToBeSent);
-                    scope.projectForm.$setPristine();
+                if (scope.messageToBeSent !== "") {
+                    scope.invalidMessage = false;
+                    scope.sendMessageFn(scope.messageToBeSent);
                     scope.messageToBeSent = " ";
+                } else {
+                     scope.invalidMessage = true;
                 }
             };
         }

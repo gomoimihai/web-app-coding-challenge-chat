@@ -35,7 +35,6 @@ challengeChatApp.factory('AuthService', [function () {
             name: userName,
             email: userEmail
         };
-        return true;
     }
 
     return {

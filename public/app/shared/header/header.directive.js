@@ -2,8 +2,8 @@
  * header Directive
  * @namespace Directives
  */
-challengeChatApp.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService',
-    function (APP_DETAILS, $mdDialog, AuthService) {
+challengeChatApp.directive('chatHeader', ['$mdDialog', 'AuthService',
+    function ($mdDialog, AuthService) {
         'use strict';
         /**
          * @namespace header
@@ -14,7 +14,7 @@ challengeChatApp.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService',
             restrict: 'E',
             replace: true,
             templateUrl: 'app/shared/header/header.view.html',
-            link: function (scope) {
+            link: function (scope, el, attrs) {
                 /**
                  * @name showDialog
                  * @desc Show dialog box
@@ -22,12 +22,12 @@ challengeChatApp.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService',
                  * @returns {undefined}
                  * @memberOf Directives.header
                  */
-                function showDialog(ev) {
+                function showDialog(evt) {
                     scope.user = AuthService.getUser();
                     $mdDialog.show({
                         templateUrl: 'app/shared/header/dialogUser.view.html',
                         parent: angular.element(document.body),
-                        targetEvent: ev,
+                        targetEvent: evt,
                         scope: scope,
                         preserveScope: true,
                         clickOutsideToClose : true
@@ -57,10 +57,17 @@ challengeChatApp.directive('header', ['APP_DETAILS', '$mdDialog', 'AuthService',
                     $mdDialog.cancel();
                 }
 
-                scope.appName = APP_DETAILS.appName;
+                scope.chatAppName = scope.$parent.$eval(attrs.headerAppName);
 
+                /**
+                 * @name refreshData
+                 * @desc Broadcast refresh data event
+                 * @param {undefined}
+                 * @returns {undefined}
+                 * @memberOf Directives.header
+                 */
                 scope.refreshData = function () {
-                    scope.$parent.$broadcast('refresh');
+                    scope.$broadcast('refresh');
                 };
 
                 scope.dialog = {
